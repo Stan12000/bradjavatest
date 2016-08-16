@@ -7,6 +7,9 @@ public class year {
 
 	public static void main(String[] args) throws IOException { 
 		
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str = br.readLine();
+		
 		int year,i;
 		for (i=1;i>=0;i++){
 		 System.out.print("êÉ¿é¤J¦~¯»:");
