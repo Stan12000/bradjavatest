@@ -7,7 +7,7 @@ public class practice125_5 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		int b,i,c,d,e;
+		int b,i,c,d,e,f;
 		for(i=1;i>0;i++){
 			
 		System.out.println("糗輸入大於2的整數:");
