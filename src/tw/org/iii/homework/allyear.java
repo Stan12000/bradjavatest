@@ -8,7 +8,7 @@ public class allyear {
 		// TODO Auto-generated method stub
 
 		int year,month,day1,feb,sum=0,sum1= 0,all=0,c,e=0;
-		int one =31,two=20,three=31,four=30,f,g;
+		int one =31,two=20,three=31,four=30,f,g=0;
 		//1752年以前
 
 	String stryear = JOptionPane.showInputDialog("year");
@@ -17,7 +17,7 @@ public class allyear {
 	month = Integer.parseInt(strmonth);
 		
 	if(year<1752){	
-		for(int i = year;i>1;i--){
+		for(int i = year-1;i>0;i--){
 			if(i%4 == 0){
 				day1 = 366;
 			}else{
@@ -32,7 +32,7 @@ public class allyear {
   				e = 31;
   				break;
   			case 2:
-  				e=28;
+  				e=29;
   				break;
   			default: 
   			    e=30;
@@ -83,16 +83,19 @@ public class allyear {
 		
 		all = sum +sum1+1;
 		int date = all % 7;
-		g=7-date;
+		    
 		System.out.println("日 \t一 \t二 \t三 \t四 \t五  \t六  ");
-		if(date==1 ){
+		if(date == 0 ){
 				for(int a = 7;a>date;a--){
 					System.out.print("\t");
+					
+					g++;
 				}
-		}else if(date==2){System.out.println();}
-		else{
-			for(int a = 0;a<date-1;a++){
+		  
+		}else {
+			for(int a = 1;a<date;a++){
 				System.out.print("\t");
+				g++;
 			}
 		}
 		
@@ -112,7 +115,7 @@ public class allyear {
 	}else if(year==1752){	
 
 		
-		for(int i = year;i>1;i--){
+		for(int i = year-1;i>0;i--){
 			if(i%4 == 0){
 				day1 = 366;
 			}else{
@@ -127,7 +130,7 @@ public class allyear {
   				e = 31;
   				break;
   			case 2:
-  				e=28;
+  				e=29;
   				break;
   			case 9:
   				e=19;
@@ -136,7 +139,7 @@ public class allyear {
   			    e=30;
   			    break;
 		}
-		   for(int i =month;i>0;i--){
+		   for(int i =1;i<month;i++){
 			switch(i){
 			case 1: case 3: case 5: case 7: case 8:case 10: case 12:
 				c = 31;
@@ -155,7 +158,7 @@ public class allyear {
 		   }
 		   
 	      }else{
-	    	  for(int i =month;i>0;i--){
+	    	  for(int i =1;i<month;i++){
 	  			switch(i){
 	  			case 1:case 3:case 5: case 7:case 8:case 10: case 12:
 	  				c = 31;
@@ -177,7 +180,7 @@ public class allyear {
 	  				e = 31;
 	  				break;
 	  			case 2:
-	  				e=28;
+	  				e=29;
 	  				break;
 	  			case 9: 
 	  				e=19;
@@ -191,23 +194,29 @@ public class allyear {
 		all =sum+sum1;
 		int date= all % 7;
 		System.out.println("日 \t一 \t二 \t三 \t四 \t五 \t六  ");
-		if(date>0 && date <6){
-				for(int a = 0;a<date;a++){
-					System.out.print("\t");
-				}
-		}else {
-			System.out.println();
-		}//else{
+		if(date==1 ){
+			for(int a = 7;a>date;a--){
+				System.out.print("\t");
+				
+				g++;
+			}
+	    }else if(date==2){System.out.println();}
+	        else{
+		      for(int a = 0;a<date-1;a++){
+			  System.out.print("\t");
+			  g++;
+		         }
+	           }//else{
 		//	System.out.println();
 		//}
 		if(month==9){
 		for(int i=1;i<=30;i++){
 		 if(i==3){
 			i=14;
-			date=5;
+			g=5;
 		 } 	
 		 System.out.print(i+"\t");
-			f= date + i;
+			f= g + i;
 			if(f%7==0){
 				System.out.println();
 				}
@@ -216,7 +225,7 @@ public class allyear {
 		}}else{	
 		for(int i=1;i<=e;i++){
 			System.out.print(i+"\t");
-			f= date + i;
+			f= g + i;
 			if(f%7==0){
 				System.out.println();
 			}
