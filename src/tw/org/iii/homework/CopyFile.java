@@ -9,7 +9,8 @@ import javax.swing.JFileChooser;
 public class CopyFile {
 	
 	 JFileChooser ch;
-	 File ch1;
+	 File ch1,ch2;
+	 File[] f,s;
 	 FileInputStream fin;
 	 FileOutputStream fout;
 	CopyFile(){
@@ -21,7 +22,8 @@ public class CopyFile {
 			System.out.println(ch1.getAbsolutePath());
 		}
 		
-		Copy();
+		ch2 =new File("dir1/");
+		Copy(ch1,ch2);
 	}
 	
 
@@ -33,33 +35,39 @@ public class CopyFile {
 	}
 
 
-	 void Copy(){
+	 void Copy(File ch1,File ch2){
 		
 		try {
 				
 		
 		if(ch1.isDirectory()==true){
+		
+			ch2.mkdir();
+		
+			for( File f:ch1.listFiles()){
+				System.out.println(f);
+			    Copy(f,new File(ch2,f.getName()));
+				}
 			
+			
+		 
 		}else{
-			 fin= new FileInputStream(ch1);
+			fout = new FileOutputStream("dir1/"+ch1.getName());
+			fin= new FileInputStream(ch1);
 			int i;
-			while(( i =fin.read())==-1){
-				fin.read();
+			byte[] b = new byte[1024];
+			while(( i =fin.read(b))!=-1){
+				fout.write(b);;
 			}
-			
+			fout.flush();
+		    fout.close();
+		    System.out.println("OK");
+		
+		
+		} 
 			}
 		
-		fout = new FileOutputStream("dir1/"+ch1.getName());
-		int b;
-		while((b=fin.read())!=-1){
-			fout.write(b);
-		}
-		fout.flush();
-		fout.close();
-		System.out.println("OK");
-		
-		
-		} catch (Exception e) {
+        catch (Exception e) {
 			System.out.println(e.toString());
 		                                  }
 			
