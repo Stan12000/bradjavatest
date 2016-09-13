@@ -50,7 +50,7 @@ public class Change {
 	 
 	    	
 	    	d =str1.charAt(i+1)-48; 
-	    	
+	    	//
 	    	//System.out.println(c);
 	    	if(c == 0){
 	    	    if(d != 0  ){
